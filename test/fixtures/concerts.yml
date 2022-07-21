@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-07-21
+  place: MyString
+  assistants: 1
+  duration: 1
+  band: one
+
+two:
+  date: 2022-07-21
+  place: MyString
+  assistants: 1
+  duration: 1
+  band: two

@@ -1,0 +1,44 @@
+<%= form_with(model: band, local: true) do |form| %>
+    <% if band.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved: </h2>
+            <ul>
+                <% band.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.label :Nombre %>
+                <%= form.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label 'Cantidad de integrantes' %>
+                <%= form.text_field :members, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label 'Fecha debut   ' %>
+                <%= form.date_select :first_show, order: [:day, :month, :year], start_year: 1990, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label 'Tipo   ' %>
+                <%= form.select :band_type, @band_types, class: 'form-control'%>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <%= form.submit 'Guardar', class: 'btn btn-primary btn-block' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
