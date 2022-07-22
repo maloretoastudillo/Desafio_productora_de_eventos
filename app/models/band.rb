@@ -19,11 +19,11 @@ class Band < ApplicationRecord
     end
 
     def last_concert
-        self.concerts.map{|concert| concert.date}.max    
+        self.concerts.order(:date).last.date.strftime("%Y-%^B-%A") if self.concerts.any?
     end
 
     def max_assistants
-        self.concerts.map{|concert| concert.assistants}.max
+        self.concerts.maximum(:assistants)
     end
 
     def longest
