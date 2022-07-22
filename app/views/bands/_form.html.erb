@@ -32,21 +32,18 @@
                 <%= form.select :band_type, @band_types, class: 'form-control'%>
             </div>
 
-<p>Crew fields</p>
-<%= form.fields_for :crews do |crew_form| %>
-<%= crew_form.label :name %>
-<%= crewt_form.text_field :name %>
-<%= crew_form.label :instrument %>
-<%= crew_form.text_field :instrument %>
-<% end %>
+            <h5><strong>Integrantes</strong></h5>
 
-
-
-
-
-
-
-
+            <div class='form-group'>
+                <%= form.fields_for :crews do |t| %>
+                <%= render "crew_fields", :f => t %>
+            <% end %>
+      
+                <div>
+                    <br>
+                    <%= link_to_add_association "Agregar integrante", form, :crews %> <!-- (*) -->
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-12">

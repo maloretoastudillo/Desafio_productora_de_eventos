@@ -7,12 +7,13 @@ class BandsController < ApplicationController
     def show
         @band = Band.find(params[:id])
         @concerts = @band.concerts
-        @crews = @band.crews.build
+        @crews = @band.crews
     end
 
     def new
         @band = Band.new
         @band_types = Band.band_types.keys
+        @crews = @band.crews.build
     end
 
     def create

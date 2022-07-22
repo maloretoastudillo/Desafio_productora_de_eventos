@@ -58,3 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'net-smtp', '~> 0.3.1'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+
+# Unobtrusive nested forms handling, using jQuery. Use this & discover cocoon-heaven.
+gem 'cocoon'

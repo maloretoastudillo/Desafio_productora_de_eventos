@@ -6,12 +6,15 @@
                     <h5 class="card-title text-center"><strong><%= @band.name %></strong></h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Conciertos en este mes: <%=  @band.this_month %></li>
-                    <li class="list-group-item">Último concierto: <%=  @band.last_concert%></li>
-                    <li class="list-group-item">Máximo de asistentes: <%=  @band.max_assistants %></li>
-                    <li class="list-group-item">Mayor duración de concierto: <%= @band.longest %></li>  
+                    <li class="list-group-item"><strong><%= "Integrantes:" %></strong></li>
+                    <% @crews.each do |member|%>
+                    <li class="list-group-item border-0"><%= "#{member.name} / #{member.instrument}" %></li>
+                    <% end %>
+                    <li class="list-group-item"><strong>Conciertos en este mes:</strong> <%=  @band.this_month %></li>
+                    <li class="list-group-item"><strong>Último concierto: </strong><%=  @band.last_concert%></li>
+                    <li class="list-group-item"><strong>Máximo de asistentes: </strong><%=  @band.max_assistants %></li>
+                    <li class="list-group-item"><strong>Mayor duración de concierto: </strong><%= @band.longest %></li>  
                 </ul>
-                <%= link_to 'Volver', bands_path %>
             </div>
         </div>
         <div class='my-3 col-md-8'>
@@ -36,8 +39,6 @@
                     <% end %>
                 </tbody>
             </table>
-            <br>
-            <%= link_to 'Agregar concierto', new_concert_path %>
         </div>
     </div>
 </div>

@@ -7,7 +7,6 @@ class ConcertsController < ApplicationController
     def new
         @concert = Concert.new
         @bands = Band.all.pluck(:name, :id)
-        @crew = Crew.new
     end
 
     def create
