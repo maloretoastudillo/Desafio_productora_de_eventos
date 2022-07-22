@@ -6,6 +6,8 @@ class BandsController < ApplicationController
 
     def show
         @band = Band.find(params[:id])
+        @concerts = @band.concerts
+        @crews = @band.crews.build
     end
 
     def new
@@ -49,7 +51,6 @@ class BandsController < ApplicationController
     private
 
     def band_params
-        params.require(:band).permit(:name, :members, :first_show, :band_type)
+        params.require(:band).permit(:name, :members, :first_show, :band_type, crews_attributes:[:id, :name, :instrument, :_destroy])
     end
-
 end

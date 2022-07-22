@@ -1,15 +1,43 @@
-<div class='container my-3 d-flex justify-content-center'>
-    <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title text-center"><strong><%= @band.name %></strong></h5>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Conciertos en este mes: </li>
-        <li class="list-group-item">Último concierto:</li>
-        <li class="list-group-item">Máximo de asistentes:</li>
-        <li class="list-group-item">Mayor duración de concierto:</li>  
-    </ul>
-    <div class="card-body d-flex justify-content-end">
-        <%= link_to 'Volver', bands_path %>
+<div class='container'>
+    <div class='row'>
+        <div class='my-3  justify-content-center col-md-4'>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center"><strong><%= @band.name %></strong></h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Conciertos en este mes: <%=  @band.this_month %></li>
+                    <li class="list-group-item">Último concierto: <%=  @band.last_concert%></li>
+                    <li class="list-group-item">Máximo de asistentes: <%=  @band.max_assistants %></li>
+                    <li class="list-group-item">Mayor duración de concierto: <%= @band.longest %></li>  
+                </ul>
+                <%= link_to 'Volver', bands_path %>
+            </div>
+        </div>
+        <div class='my-3 col-md-8'>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Lugar</th>
+                        <th scope="col">Asistentes</th>
+                        <th scope="col">Duración (min)</th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody class='text-center'>
+                    <% @concerts.order(date: :desc).each do |concert| %>
+                        <tr>
+                            <td class='text-left'><%= concert.date.strftime("%d-%m-%Y")%></td>
+                            <td><%= concert.place %></td>
+                            <td><%= concert.assistants%></td>
+                            <td><%= concert.duration %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <br>
+            <%= link_to 'Agregar concierto', new_concert_path %>
+        </div>
     </div>
 </div>

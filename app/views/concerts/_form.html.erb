@@ -1,0 +1,50 @@
+<%= form_with(model: concert, local: true) do |form| %>
+    <% if concert.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(band.errors.count, "error") %> prohibited this band from being saved: </h2>
+            <ul>
+                <% concert.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <%= form.label 'Fecha:   ' %>
+                <%= form.date_select :date, order: [:day, :month, :year], start_year: 1990, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :Lugar %>
+                <%= form.text_field :place, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label :Asistentes %>
+                <%= form.text_field :assistants, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label 'Duración (min)' %>
+                <%= form.text_field :duration, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+                <%= form.label 'Banda:   ' %>
+                <%= form.select :band_id, @bands, class: 'form-control'%>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <%= form.submit 'Guardar', class: 'btn btn-primary btn-block' %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

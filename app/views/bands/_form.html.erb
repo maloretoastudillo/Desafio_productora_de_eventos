@@ -32,6 +32,22 @@
                 <%= form.select :band_type, @band_types, class: 'form-control'%>
             </div>
 
+<p>Crew fields</p>
+<%= form.fields_for :crews do |crew_form| %>
+<%= crew_form.label :name %>
+<%= crewt_form.text_field :name %>
+<%= crew_form.label :instrument %>
+<%= crew_form.text_field :instrument %>
+<% end %>
+
+
+
+
+
+
+
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">

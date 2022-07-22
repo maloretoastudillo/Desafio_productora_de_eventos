@@ -1,0 +1,27 @@
+<div class='container my-2'>
+<table class="table text-center">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Lugar</th>
+            <th scope="col">Asistentes</th>
+            <th scope="col">Duración (min)</th>
+            <th scope="col">Banda</th>
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody class='text-center'>
+        <% @concerts.order(date: :desc).each do |concert| %>
+            <tr>
+                <td class='text-left'><%= concert.date.strftime("%d-%m-%Y")%></td>
+                <td><%= concert.place %></td>
+                <td><%= concert.assistants%></td>
+                <td><%= concert.duration %></td>
+                <td><%= concert.band.name %></td>
+                <td><%= link_to 'Editar', edit_concert_path(concert) %></td>
+                <td><%= link_to 'Eliminar', concert, method: :delete, data: {confirm: "¿Está seguro de eliminar este registro?"} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+</div>

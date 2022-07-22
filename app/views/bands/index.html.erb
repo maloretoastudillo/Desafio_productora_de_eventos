@@ -11,15 +11,15 @@
                 <th colspan="2"></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class='text-center'>
             <% @bands.each do |band| %>
             <tr>
-                <td><%= link_to "#{band.name}", band_path(band)%></td>
+                <td class='text-left'><%= link_to "#{band.name}", band_path(band)%></td>
                 <td><%= band.members %></td>
                 <td><%= band.first_show.strftime("%d-%m-%Y") %></td>
                 <td><%= band.band_type %></td>
-                <td><%= band.name %></td>
-                <td><%= band.name %></td>
+                <td><%= band.number_of %></td>
+                <td><%= band.total %></td>
                 <td><%= link_to 'Editar', edit_band_path(band) %></td>
                 <td><%= link_to 'Eliminar', band, method: :delete, data: {confirm: "¿Está seguro de eliminar la información asociada a #{band.name}?"} %></td>
             </tr>
@@ -27,5 +27,4 @@
         </tbody>
     </table>
     <br>
-    <%= link_to 'Agregar una nueva Banda', new_band_path %>
 </div>
